@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://xmlns.jcp.org/jsf/html"  xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+ 
+	<h:head>  
+		<title>Current Inventory</title>  
+	</h:head>  
+	
+<h:body>  
+		<h1>Current Inventory</h1>
+		<h:dataTable value = "#{inventory.items}" var = "o">
+			<h:column>    				
+      			<f:facet name = "header">Item Id</f:facet>    				
+      			#{item.id}
+   			</h:column>
+   			
+   			<h:column>    				
+      			<f:facet name = "header">Name</f:facet>    				
+      			#{item.name}
+   			</h:column>
+   			
+   			<h:column>    				
+      			<f:facet name = "header">Quantity</f:facet>    				
+      			#{item.quantity}
+   			</h:column>
+   			
+   			<h:column>    				
+      			<f:facet name = "header">Cost</f:facet>    				
+      			#{item.cost}
+   			</h:column>
+		</h:dataTable>
+		
+		
+		<h1>Add Inventory Item</h1>
+		<h:form id="form">  
+		<table>  
+			<tr>  
+				<td><h:outputLabel for="id">Item ID</h:outputLabel></td>  
+				<td><h:inputText id="id-id" value="#{item.id}"/></td> 
+				<td><h:message for="id-id" style="color: red"/></td> 
+			</tr>
+			<tr>  
+				<td><h:outputLabel for="name">Name</h:outputLabel></td>  
+				<td><h:inputText id="name-id" value="#{item.name}" min="8"/></td> 
+				<td><h:message for="name-id" style="color: red"/></td>
+			</tr>
+			<tr>  
+				<td><h:outputLabel for="quantity">Quantity:</h:outputLabel></td>  
+				<td><h:inputText id="quantity-id" value="#{item.quantity}" min="8"/></td> 
+				<td><h:message for="quantity-id" style="color: red"/></td>
+			</tr>
+			<tr>  
+				<td><h:outputLabel for="cost">Cost</h:outputLabel></td>  
+				<td><h:inputText id="cost-id" value="#{item.cost}" min="8"/></td> 
+				<td><h:message for="cost-id" style="color: red"/></td>
+			</tr>	
+		</table>
+		<h:commandButton value="Submit" action="#{inventoryController.addItem(inventory, item)}"></h:commandButton>  
+		</h:form> 
+	</h:body>
+</html> 

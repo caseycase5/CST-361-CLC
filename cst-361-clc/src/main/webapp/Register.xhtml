@@ -1,0 +1,32 @@
+<!DOCTYPE html>  
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://xmlns.jcp.org/jsf/html"  xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+ 
+	<h:head>  
+		<title>Register</title>  
+	</h:head>  
+	
+	<h:body>  
+		<h1 text-align="center">Register</h1>
+		
+		<h:form id="form">  
+		<table>  
+			<tr> 
+				<td><h:outputLabel for="name">Name</h:outputLabel></td>  
+				<td><h:inputText id="name-id" value="#{user.name}"/></td>
+				<td><h:message for="name-id" style="color: red"/></td>
+			</tr>
+			<tr>  
+				<td><h:outputLabel for="username">Username</h:outputLabel></td>  
+				<td><h:inputText id="username-id" value="#{user.username}"/></td> 
+				<td><h:message for="username-id" style="color: red"/></td> 
+			</tr>
+			<tr>  
+				<td><h:outputLabel for="password">Password</h:outputLabel></td>  
+				<td><h:inputSecret id="password-id" value="#{user.password}" min="4"/></td> 
+				<td><h:message for="password-id" style="color: red"/></td>
+			</tr>	
+		</table>
+		<h:commandButton value="Submit" action="#{userController.onRegister(user)}"></h:commandButton>  
+		</h:form> 
+	</h:body>
+</html> 
