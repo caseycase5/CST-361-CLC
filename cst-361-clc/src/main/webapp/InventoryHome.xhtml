@@ -10,34 +10,29 @@
 		<h:dataTable value = "#{inventory.items}" var = "o">
 			<h:column>    				
       			<f:facet name = "header">Item Id</f:facet>    				
-      			#{item.id}
+      			#{o.id}
    			</h:column>
    			
    			<h:column>    				
       			<f:facet name = "header">Name</f:facet>    				
-      			#{item.name}
+      			#{o.name}
    			</h:column>
    			
    			<h:column>    				
       			<f:facet name = "header">Quantity</f:facet>    				
-      			#{item.quantity}
+      			#{o.quantity}
    			</h:column>
    			
    			<h:column>    				
       			<f:facet name = "header">Cost</f:facet>    				
-      			#{item.cost}
+      			#{o.cost}
    			</h:column>
 		</h:dataTable>
 		
 		
 		<h1>Add Inventory Item</h1>
-		<h:form id="form">  
+		<h:form id="item_form">  
 		<table>  
-			<tr>  
-				<td><h:outputLabel for="id">Item ID</h:outputLabel></td>  
-				<td><h:inputText id="id-id" value="#{item.id}"/></td> 
-				<td><h:message for="id-id" style="color: red"/></td> 
-			</tr>
 			<tr>  
 				<td><h:outputLabel for="name">Name</h:outputLabel></td>  
 				<td><h:inputText id="name-id" value="#{item.name}" min="8"/></td> 
@@ -54,7 +49,21 @@
 				<td><h:message for="cost-id" style="color: red"/></td>
 			</tr>	
 		</table>
-		<h:commandButton value="Submit" action="#{inventoryController.addItem(inventory, item)}"></h:commandButton>  
+		<h:commandButton value="Add Item" action="#{inventoryController.addItem(inventory, item)}"></h:commandButton>  
+		</h:form>
+		
+		<br></br>
+		<br></br>
+		<h1>Add Inventory</h1>
+		<h:form id="inventory_form">  
+		<table>  
+			<tr>  
+				<td><h:outputLabel for="id">Inventory Name</h:outputLabel></td>  
+				<td><h:inputText id="name-id" value="#{inventory.name}"/></td> 
+				<td><h:message for="name-id" style="color: red"/></td> 
+			</tr>
+		</table>
+		<h:commandButton value="Add Inventory" action="#{inventoryController.addInventory(inventory)}"></h:commandButton>  
 		</h:form> 
 	</h:body>
 </html> 

@@ -25,6 +25,16 @@ public class Inventory {
 		items = new ArrayList<Item>();
 	}
 	
+	public Inventory (String name) {
+		this.name = name;
+	}
+	
+	public Inventory(String name, int numOfItems) {
+		this.name = name;
+		this.numOfItems = numOfItems;
+		this.items = new ArrayList<Item>();
+	}
+	
 	public Inventory(String name, int numOfItems, List<Item> items) {
 		this.name = name;
 		this.numOfItems = numOfItems;

@@ -6,13 +6,22 @@ import javax.ejb.TransactionManagementType;
 
 import beans.Inventory;
 import beans.Item;
+import data.InventoryDataService;
 
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class InventoryManager {
 
-	public Inventory addItem(Inventory inventory, int itemId, String itemName, int quantity, double cost) {
-		inventory.items.add(new Item(itemId, itemName, quantity, cost));
+	InventoryDataService service = new InventoryDataService();
+	
+	public Inventory addItem(Inventory inventory, String itemName, int quantity, double cost) {
+		Item item = new Item(itemName, quantity, cost);
+		service.createItem(item);
 		return inventory;
+	}
+	
+	public Inventory addInventory(Inventory inventory) {
+		service.create(inventory);
+		return service.findBy(inventory);
 	}
 }

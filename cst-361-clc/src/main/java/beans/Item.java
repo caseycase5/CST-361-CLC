@@ -22,13 +22,18 @@ public class Item {
 		cost = 0.00;
 	}
 	
+	public Item(String name, int quantity, double cost) {
+		this.name = name;
+		this.quantity = quantity;
+		this.cost = cost;
+	}
+	
 	public Item(int id, String name, int quantity, double cost) {
 		this.id = id;
 		this.name = name;
 		this.quantity = quantity;
 		this.cost = cost;
 	}
-
 	
 	// Getters and Setters
 	

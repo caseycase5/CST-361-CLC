@@ -5,7 +5,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import beans.Inventory;
 import beans.User;
+import data.InventoryDataService;
 
 @ManagedBean
 @ViewScoped
@@ -25,6 +27,9 @@ public class UserController {
 		// For now, this is simulated using a default username/password combo.
 		boolean x = user.validateLogin(user.username, user.password);
 		if(x) {
+			InventoryDataService service = new InventoryDataService();
+			Inventory inventory = service.findBy(new Inventory("Test Inventory"));
+			FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("inventory", inventory);
 			return "InventoryHome.xhtml";
 		}
 		else {
