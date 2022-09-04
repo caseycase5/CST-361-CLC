@@ -4,6 +4,7 @@ package data;
 import java.util.List;
 
 import beans.Inventory;
+import beans.Item;
 
 public interface DataAccessInterface<T> {
 	public List<T> findAll();
@@ -12,4 +13,5 @@ public interface DataAccessInterface<T> {
 	public boolean create(Inventory inventory);
 	public boolean update(Inventory inventory);
 	public boolean delete(Inventory inventory);
+	public boolean createItem(Item item);
 }

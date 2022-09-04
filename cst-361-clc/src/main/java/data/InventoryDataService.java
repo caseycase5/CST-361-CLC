@@ -12,15 +12,18 @@ import java.util.List;
 import javax.ejb.Local;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 
 import beans.Inventory;
 import beans.Item;
+import util.LoggingInterceptor;
 /**
  * Session Bean implementation class MusicDataService
  */
 @Stateless
 @Local(DataAccessInterface.class)
 @LocalBean
+@Interceptors(LoggingInterceptor.class)
 public class InventoryDataService implements DataAccessInterface<Inventory> {
 	 /**
      * Default constructor. 
@@ -277,7 +280,7 @@ public class InventoryDataService implements DataAccessInterface<Inventory> {
 			// Connect to the Database
 			conn = DriverManager.getConnection(url, username, password);
 
-			// Insert an Album
+			// Insert an Item
 			String sql1 = String.format("INSERT INTO ITEMS(NAME, QUANTITY, COST, INVENTORYID) VALUES('%s', '%d', '%f', '1')", item.getName(), item.getQuantity(), item.getCost());
 			Statement stmt1 = conn.createStatement();
 			stmt1.executeUpdate(sql1);

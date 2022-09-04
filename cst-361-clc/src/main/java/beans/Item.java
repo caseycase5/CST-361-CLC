@@ -3,6 +3,8 @@ package beans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 @ManagedBean
 @ViewScoped
@@ -10,8 +12,13 @@ public class Item {
 	
 	// Variables
 	public int id;
+	@NotNull()
 	public String name;
+	@NotNull()
+	@Digits(message="Invalid Number", integer = 8, fraction = 0)
 	public int quantity;
+	@NotNull()
+	@Digits(message="Invalid Number", integer = 6, fraction = 2)
 	public double cost;
 	
 	// Constructors
